@@ -15,3 +15,10 @@ way-displays >/tmp/way-displays.${XDG_VTNR}.${USER}.log 2>&1 &
 
 # Run waybar
 waybar >/dev/null 2>&1 &
+
+# Set GTK themes and fonts
+gsettings set org.gnome.desktop.interface gtk-theme "Pop-dark" >/dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface font-name "Roboto 10" >/dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface document-font-name "Roboto 10" >/dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface monospace-font-name "Roboto Mono 11" >/dev/null 2>&1 &
+gsettings set org.gnome.desktop.wm.preferences titlebar-font "Roboto Medium 10" >/dev/null 2>&1 &

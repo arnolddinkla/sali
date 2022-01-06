@@ -4,6 +4,9 @@
 # Force firefox to use wayland backend
 MOZ_ENABLE_WAYLAND=1
 
+# Set global GTK theme
+GTK_THEME=Pop-dark
+
 # Set cursor theme.
 # Find icons themes with the command below or similar:
 #     find /usr/share/icons/ -type d -name "cursors"

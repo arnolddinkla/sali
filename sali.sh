@@ -253,6 +253,9 @@ function install() {
     # Install labwc and other important utilities via AUR
     exec_as_user "paru -S --noconfirm --needed labwc foot wlr-randr way-displays waybar"
 
+    # Install additional GTK theme and fonts to make everything look consistent
+    arch-chroot /mnt pacman -S --noconfirm --needed pop-gtk-theme ttf-roboto ttf-roboto-mono
+
     # Clone sagi git repo so that user can run post-install recipe
     arch-chroot -u $USER_NAME /mnt git clone https://github.com/rstrube/sali.git /home/${USER_NAME}/sali
 

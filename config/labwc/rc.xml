@@ -19,9 +19,9 @@
   <theme>
     <name>sali</name>
     <cornerRadius>5</cornerRadius>
-    <font place="ActiveWindow"><name>sans</name><size>10</size></font>
-    <font place="MenuItem"><name>sans</name><size>10</size></font>
-    <font place="OSD"><name>sans</name><size>10</size></font>
+    <font place="ActiveWindow"><name>Roboto</name><size>10</size></font>
+    <font place="MenuItem"><name>Roboto</name><size>10</size></font>
+    <font place="OSD"><name>Roboto</name><size>10</size></font>
   </theme>
 
   <focus>
@@ -48,14 +48,14 @@
     <keybind key="A-Escape">
       <action name="Exit" />
     </keybind>
-    <keybind key="A-Tab">
-      <action name="NextWindow" />
-    </keybind>
-	<keybind key="A-F4">
+    <keybind key="A-F4">
       <action name="Close" />
     </keybind>
     <keybind key="W-Return">
       <action name="Execute"><command>foot</command></action>
+    </keybind>
+    <keybind key="W-Tab">
+      <action name="NextWindow" />
     </keybind>
     <keybind key="A-Left">
       <action name="MoveToEdge"><direction>left</direction></action>

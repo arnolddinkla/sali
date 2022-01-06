@@ -29,8 +29,8 @@ window.inactive.button.unpressed.image.color: #999999
 # menu
 menu.items.bg.color: #1f1f1f
 menu.items.text.color: #999999
-menu.items.active.bg.color: #3700b3
-menu.items.active.text.color: #dedede
+menu.items.active.bg.color: #03dac6
+menu.items.active.text.color: #1f1f1f
 
 # on screen display (window-cycle dialog)
 osd.bg.color: #1f1f1f
