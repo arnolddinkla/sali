@@ -22,3 +22,5 @@ gsettings set org.gnome.desktop.interface font-name "Roboto 10" >/dev/null 2>&1 
 gsettings set org.gnome.desktop.interface document-font-name "Roboto 10" >/dev/null 2>&1 &
 gsettings set org.gnome.desktop.interface monospace-font-name "Roboto Mono 11" >/dev/null 2>&1 &
 gsettings set org.gnome.desktop.wm.preferences titlebar-font "Roboto Medium 10" >/dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface font-hinting "slight" >/dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface font-hinting "rgba" >/dev/null 2>&1 &
