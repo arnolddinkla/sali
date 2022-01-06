@@ -1,0 +1,37 @@
+# general
+border.width: 1
+padding.height: 3
+menu.overlap.x: 0
+menu.overlap.y: 0
+
+# window border
+window.active.border.color: #242424
+window.inactive.border.color: #121212
+
+# window titlebar background
+window.active.title.bg.color: #242424
+window.inactive.title.bg.color: #121212
+
+# window titlebar text
+window.active.label.text.color: #dedede
+window.inactive.label.text.color: #616161
+window.label.text.justify: left
+
+# window buttons
+window.active.button.unpressed.image.color: #dedede
+window.inactive.button.unpressed.image.color: #616161
+
+# Note that "iconify", "max", "close" buttons colors can be defined
+# individually by inserting the type after the button node, for example:
+#
+#     window.active.button.iconify.unpressed.image.color: #333333
+
+# menu
+menu.items.bg.color: #242424
+menu.items.text.color: #dedede
+menu.items.active.bg.color: #3700b3
+menu.items.active.text.color: #dedede
+
+# on screen display (window-cycle dialog)
+osd.bg.color: #121212
+osd.label.text.color: #dedede
