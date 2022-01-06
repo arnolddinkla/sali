@@ -263,6 +263,10 @@ function install() {
     arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/labwc/autostart /home/${USER_NAME}/.config/labwc/.
     arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/labwc/environment /home/${USER_NAME}/.config/labwc/.
 
+    # Copy sali theme for labwc
+    arch-chroot -u $USER_NAME /mnt mkdir -p /home/${USER_NAME}/.local/share/themes
+    arch-chroot -u $USER_NAME /mnt cp -r /home/${USER_NAME}/sali/themes/sali /home/${USER_NAME}/.local/share/themes/.
+
     # Copy default configuration file for way-displays
     arch-chroot -u $USER_NAME /mnt mkdir -p /home/${USER_NAME}/.config/way-displays
     arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/way-displays/cfg.yaml /home/${USER_NAME}/.config/way-displays/.

@@ -17,7 +17,7 @@
     <font><theme> can be defined without an attribute to set all places
   -->
   <theme>
-    <name></name>
+    <name>sali</name>
     <cornerRadius>5</cornerRadius>
     <font place="ActiveWindow"><name>sans</name><size>10</size></font>
     <font place="MenuItem"><name>sans</name><size>10</size></font>

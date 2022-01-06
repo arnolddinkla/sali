@@ -2,7 +2,7 @@
 # Configured for sali
 
 # Set background color.
-swaybg -c '#4D60BF' >/dev/null 2>&1 &
+swaybg -c '#292929' >/dev/null 2>&1 &
 
 # Autodetect and configure displays using way-displays
 # Note: you can configure way-displays by editing ~/.config/way-displays/cfg.yaml
