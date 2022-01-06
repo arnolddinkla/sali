@@ -202,15 +202,18 @@ function install() {
     # Explicitly install wlroots-0.15 package from community staging
     arch-chroot /mnt pacman -U --noconfirm --needed https://archlinux.org/packages/community-staging/x86_64/wlroots/download
 
-    # Install labwc
+    # Install all prereqs for labwc
     arch-chroot /mnt pacman -S --noconfirm --needed \
-        polkit                      `# Polkit` \
         xorg-xwayland               `# Xwayland support` \
         pipewire pipewire-pulse     `# Pipewire and Pipewire drop in replacement for PulseAudio` \
+        pamixer                     `# Commandline utility for controlling volume (PulseAudio)` \
+        brightnessctl               `# Commandline utility for conrolling screen brightness ` \
         xdg-desktop-portal          `# Support for screensharing in pipewire for wlroots compositors` \
         xdg-desktop-portal-wlr \
+        swaybg swayidle             `# Commandline utilities for setting background and idle management` \
         ttf-liberation              `# Liberation fonts` \
         noto-fonts noto-fonts-emoji `# Noto fonts to support emojis` \
+        otf-font-awesome            `# Font Awesome fonts for waybar` \
         rust                        `# Rust for paru AUR helper`
 
     #Note: systemctl enable --user doesn't work via arch-chroot, performing manual creation of symlinks
@@ -247,11 +250,22 @@ function install() {
     # Install AUR helper
     install_aur_helper
 
-    # Install labwc via AUR
-    exec_as_user "paru -S --noconfirm --needed labwc foot"
+    # Install labwc and other important utilities via AUR
+    exec_as_user "paru -S --noconfirm --needed labwc foot wlr-randr way-displays waybar"
 
     # Clone sagi git repo so that user can run post-install recipe
     arch-chroot -u $USER_NAME /mnt git clone https://github.com/rstrube/sali.git /home/${USER_NAME}/sali
+
+    # Copy default configuration files for labwc
+    arch-chroot -u $USER_NAME /mnt mkdir -p /home/${USER_NAME}/.config/labwc
+    arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/labwc/rc.xml /home/${USER_NAME}/.config/labwc/.
+    arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/labwc/menu.xml /home/${USER_NAME}/.config/labwc/.
+    arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/labwc/autostart /home/${USER_NAME}/.config/labwc/.
+    arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/labwc/environment /home/${USER_NAME}/.config/labwc/.
+
+    # Copy default configuration file for way-displays
+    arch-chroot -u $USER_NAME /mnt mkdir -p /home/${USER_NAME}/.config/way-displays
+    arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/way-displays/cfg.yaml /home/${USER_NAME}/.config/way-displays/.
     
     echo -e "${LIGHT_BLUE}Installation has completed! Run 'reboot' to reboot your machine.${NC}"
 }

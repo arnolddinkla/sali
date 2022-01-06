@@ -1,0 +1,10 @@
+# Labwc environment file
+# Configured for sali
+
+# Force firefox to use wayland backend
+MOZ_ENABLE_WAYLAND=1
+
+# Set cursor theme.
+# Find icons themes with the command below or similar:
+#     find /usr/share/icons/ -type d -name "cursors"
+# XCURSOR_THEME=breeze_cursors

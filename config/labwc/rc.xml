@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+
+<!--
+  Labwc configuration
+  Configured for sali
+-->
+
+<labwc_config>
+
+  <core>
+    <decoration>server</decoration>
+    <gap>0</gap>
+    <adaptiveSync>no</adaptiveSync>
+  </core>
+
+  <!--
+    <font><theme> can be defined without an attribute to set all places
+  -->
+  <theme>
+    <name></name>
+    <cornerRadius>5</cornerRadius>
+    <font place="ActiveWindow"><name>sans</name><size>10</size></font>
+    <font place="MenuItem"><name>sans</name><size>10</size></font>
+    <font place="OSD"><name>sans</name><size>10</size></font>
+  </theme>
+
+  <focus>
+    <followMouse>no</followMouse>
+    <raiseOnFocus>no</raiseOnFocus>
+  </focus>
+
+  <!--
+    Keybind actions are specified in labwc-actions(5)
+    The following keybind modifiers are supported:
+      W - window/super/logo
+      A - alt
+      C - ctrl
+      S - shift
+    Use <keyboard><default /> to load all the default keybinds (those listed
+    below). If the default keybinds are largely what you want, a sensible
+    approach could be to start the <keyboard> section with a <default />
+    element, and then (re-)define any special binds you need such as launching
+    your favourite terminal or application launcher.
+  -->
+  <keyboard>
+    <repeatRate>25</repeatRate>
+    <repeatDelay>600</repeatDelay>
+    <keybind key="A-Escape">
+      <action name="Exit" />
+    </keybind>
+    <keybind key="A-Tab">
+      <action name="NextWindow" />
+    </keybind>
+	<keybind key="A-F4">
+      <action name="Close" />
+    </keybind>
+    <keybind key="W-Return">
+      <action name="Execute"><command>foot</command></action>
+    </keybind>
+    <keybind key="A-Left">
+      <action name="MoveToEdge"><direction>left</direction></action>
+    </keybind>
+    <keybind key="A-Right">
+      <action name="MoveToEdge"><direction>right</direction></action>
+    </keybind>
+    <keybind key="A-Up">
+      <action name="MoveToEdge"><direction>up</direction></action>
+    </keybind>
+    <keybind key="A-Down">
+      <action name="MoveToEdge"><direction>down</direction></action>
+    </keybind>
+    <keybind key="W-Left">
+      <action name="SnapToEdge"><direction>left</direction></action>
+    </keybind>
+    <keybind key="W-Right">
+      <action name="SnapToEdge"><direction>right</direction></action>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="SnapToEdge"><direction>up</direction></action>
+    </keybind>
+    <keybind key="W-Down">
+      <action name="SnapToEdge"><direction>down</direction></action>
+    </keybind>
+    <keybind key="XF86_AudioLowerVolume">
+      <action name="Execute"><command>pamixer -d 5</command></action>
+    </keybind>
+    <keybind key="XF86_AudioRaiseVolume">
+      <action name="Execute"><command>pamixer -i 5</command></action>
+    </keybind>
+    <keybind key="XF86_AudioMute">
+      <action name="Execute"><command>pamixer -m</command></action>
+    </keybind>
+    <keybind key="XF86_MonBrightnessUp">
+      <action name="Execute"><command>brightnessctl set +10%</command></action>
+    </keybind>
+    <keybind key="XF86_MonBrightnessDown">
+      <action name="Execute"><command>brightnessctl set 10%-</command></action>
+    </keybind>
+  </keyboard>
+
+  <!-- edge strength is in pixels -->
+  <resistance>
+    <screenEdgeStrength>20</screenEdgeStrength>
+  </resistance>
+
+</labwc_config>

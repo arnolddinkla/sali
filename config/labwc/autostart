@@ -1,0 +1,17 @@
+# Labwc autostart file
+# Configured for sali
+
+# Set background color.
+swaybg -c '#4D60BF' >/dev/null 2>&1 &
+
+# Autodetect and configure displays using way-displays
+# Note: you can configure way-displays by editing ~/.config/way-displays/cfg.yaml
+way-displays >/tmp/way-displays.${XDG_VTNR}.${USER}.log 2>&1 &
+
+# Additional fine-tuning can be accomplished via wlr-randr
+# example: wlr-randr --output {display name} --mode {resolution}
+# run wlr-randr to get a listing of display names
+# wlr-randr --output Virtual-1 --mode 1920x1080 >/dev/null 2>&1 &
+
+# Run waybar
+waybar >/dev/null 2>&1 &
