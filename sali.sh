@@ -214,7 +214,9 @@ function install() {
         ttf-liberation              `# Liberation fonts` \
         noto-fonts noto-fonts-emoji `# Noto fonts to support emojis` \
         otf-font-awesome            `# Font Awesome fonts for waybar` \
-        rust                        `# Rust for paru AUR helper`
+        rust                        `# Rust for paru AUR helper` \
+        firefox                     `# Browser ` \
+        thunar                      `# File manager ` \
 
     #Note: systemctl enable --user doesn't work via arch-chroot, performing manual creation of symlinks
     # systemctl enable --user --now pipewire.service
