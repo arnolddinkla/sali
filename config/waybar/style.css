@@ -17,27 +17,33 @@ tooltip {
     border: 1px solid rgba(55, 55, 55, 0.5);
 }
 
-.modules-right label,
-.modules-right box {
+.modules-right label {
     padding: 0 10px;
     margin: 0 5px;
 }
 
-.modules-right widget:nth-child(3n+1) label, 
-.modules-right widget:nth-child(3n+1) box {
+.modules-right box {
+    padding: 0 10px;
+    margin: 0 0 0 5px;
+}
+
+.modules-right widget:nth-child(3n+1) label {
     background-color: #3700b3;
     color: #dedede;
 }
 
-.modules-right widget:nth-child(3n-1) label,
-.modules-right widget:nth-child(3n-1) box {
+.modules-right widget:nth-child(3n-1) label {
     background-color: #bb86fc;
     color: #121212;
 }
 
-.modules-right widget:nth-child(3n) label,
-.modules-right widget:nth-child(3n) box {
+.modules-right widget:nth-child(3n) label {
     background-color: #373737;
+    color: #dedede;
+}
+
+.modules-right box {
+    background-color: #1f1f1f;
     color: #dedede;
 }
 
