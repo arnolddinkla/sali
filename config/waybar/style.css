@@ -7,65 +7,45 @@
 }
 
 window#waybar {
-    background: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: white;
+    background: rgba(18, 18, 18, 0.5);
+    border-bottom: 3px solid rgba(41, 41, 41, 0.5);
+    color: #dedede;
 }
 
 tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
+  background: rgba(18, 18, 18, 0.5);
+  border: 1px solid rgba(41, 41, 41, 0.5);
 }
 
-tooltip label {
-  color: white;
+label, box {
+  color: #dedede;
 }
 
-#workspaces button {
-    padding: 0 5px;
-    background: transparent;
-    color: white;
-    border-bottom: 3px solid transparent;
+label:nth-child(3n+1) {
+    background-color: #bb86fc;
+    color: #121212;
 }
 
-#workspaces button.focused {
-    background: #64727D;
-    border-bottom: 3px solid white;
+label:nth-child(3n-1) {
+    background-color: #3700b3;
+    color: #dedede;
 }
 
-#mode, #clock, #battery {
-    padding: 0 10px;
-}
-
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
-}
-
-#clock {
-    background-color: #64727D;
-}
-
-#battery {
-    background-color: #ffffff;
-    color: black;
-}
-
-#battery.charging {
-    color: white;
-    background-color: #26A65B;
+label:nth-child(3n) {
+    background-color: #03dac6;
+    color: #121212;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: black;
+        background-color: #dedede;
+        color: #121212;
     }
 }
 
 #battery.warning:not(.charging) {
-    background: #f53c3c;
-    color: white;
+    background: #cf6679;
+    color: #121212;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

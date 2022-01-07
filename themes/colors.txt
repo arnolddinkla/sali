@@ -1,0 +1,23 @@
+# These colors are used for labwc and waybar themes
+# They are based off of material design color palette
+
+# Dark grey 0 depth
+#121212
+
+# Dark grey 1 depth
+#1f1f1f
+
+# (87%) White
+#dedede
+
+# (60%) White
+#999999
+
+# Cyan
+#03dac6
+
+# Purple
+#bb86fc
+
+# Deep Purple
+#3700b3
