@@ -13,27 +13,29 @@ window#waybar {
 }
 
 tooltip {
-  background: rgba(18, 18, 18, 0.5);
-  border: 1px solid rgba(41, 41, 41, 0.5);
+    background: rgba(18, 18, 18, 0.5);
+    border: 1px solid rgba(41, 41, 41, 0.5);
 }
 
-label, box {
-  color: #dedede;
+.modules-right label,
+.modules-right box {
+    padding: 0 10px;
+    margin: 0 10px;
 }
 
-label:nth-child(3n+1) {
-    background-color: #bb86fc;
-    color: #121212;
-}
-
-label:nth-child(3n-1) {
+.modules-right widget:nth-child(3n+1) {
     background-color: #3700b3;
     color: #dedede;
 }
 
-label:nth-child(3n) {
+.modules-right widget:nth-child(3n-1) {
     background-color: #03dac6;
     color: #121212;
+}
+
+.modules-right widget:nth-child(3n) {
+    background-color: #373737;
+    color: #dedede;
 }
 
 @keyframes blink {
