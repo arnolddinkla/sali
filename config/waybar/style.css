@@ -8,32 +8,35 @@
 
 window#waybar {
     background: rgba(18, 18, 18, 0.5);
-    border-bottom: 3px solid rgba(41, 41, 41, 0.5);
+    border-bottom: 3px solid rgba(55, 55, 55, 0.5);
     color: #dedede;
 }
 
 tooltip {
     background: rgba(18, 18, 18, 0.5);
-    border: 1px solid rgba(41, 41, 41, 0.5);
+    border: 1px solid rgba(55, 55, 55, 0.5);
 }
 
 .modules-right label,
 .modules-right box {
     padding: 0 10px;
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
-.modules-right widget:nth-child(3n+1) {
+.modules-right widget:nth-child(3n+1) label, 
+.modules-right widget:nth-child(3n+1) box {
     background-color: #3700b3;
     color: #dedede;
 }
 
-.modules-right widget:nth-child(3n-1) {
+.modules-right widget:nth-child(3n-1) label,
+.modules-right widget:nth-child(3n-1) box {
     background-color: #03dac6;
     color: #121212;
 }
 
-.modules-right widget:nth-child(3n) {
+.modules-right widget:nth-child(3n) label,
+.modules-right widget:nth-child(3n) box {
     background-color: #373737;
     color: #dedede;
 }
