@@ -258,7 +258,7 @@ function install() {
     install_aur_helper
 
     # Install labwc and other important utilities via AUR
-    exec_as_user "paru -S --noconfirm --needed labwc foot wlr-randr way-displays waybar"
+    exec_as_user "paru -S --noconfirm --needed labwc foot wlr-randr way-displays waybar network-manager-applet"
 
     # Install additional GTK theme and fonts to make everything look consistent
     arch-chroot /mnt pacman -S --noconfirm --needed pop-gtk-theme ttf-roboto ttf-roboto-mono
