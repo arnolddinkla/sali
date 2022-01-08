@@ -7,13 +7,17 @@
 }
 
 window#waybar {
+    /* #121212 */
     background: rgba(18, 18, 18, 0.5);
+    /* #373737 */
     border-bottom: 3px solid rgba(55, 55, 55, 0.5);
     color: #dedede;
 }
 
 tooltip {
+    /* #121212 */
     background: rgba(18, 18, 18, 0.5);
+    /* #373737 */
     border: 1px solid rgba(55, 55, 55, 0.5);
 }
 
@@ -23,24 +27,24 @@ tooltip {
     margin: 0 5px;
 }
 
-.modules-right widget:nth-child(3n+1) label {
-    background-color: #373737;
-    color: #dedede;
-}
-
-.modules-right widget:nth-child(3n-1) label {
+.modules-right > widget:nth-child(3n+1) > label {
     background-color: #3700b3;
     color: #dedede;
 }
 
-.modules-right widget:nth-child(3n) label {
+.modules-right > widget:nth-child(3n-1) > label {
     background-color: #bb86fc;
     color: #121212;
 }
 
-.modules-right box {
+.modules-right > widget:nth-child(3n) > label {
     background-color: #373737;
-    color: #121212;
+    color: #dedede;
+}
+
+.modules-right > widget > box {
+    background-color: #373737;
+    color: #dedede;
 }
 
 @keyframes blink {
