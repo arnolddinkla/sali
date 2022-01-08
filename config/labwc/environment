@@ -1,6 +1,9 @@
 # Labwc environment file
 # Configured for sali
 
+# Set core env vars
+XDG_CURRENT_DESKTOP=wlroots
+
 # Force firefox to use wayland backend
 MOZ_ENABLE_WAYLAND=1
 

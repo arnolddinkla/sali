@@ -24,3 +24,6 @@ gsettings set org.gnome.desktop.interface monospace-font-name "Roboto Mono 11" >
 gsettings set org.gnome.desktop.wm.preferences titlebar-font "Roboto Medium 10" >/dev/null 2>&1 &
 gsettings set org.gnome.desktop.interface font-hinting "slight" >/dev/null 2>&1 &
 gsettings set org.gnome.desktop.interface font-antialiasing "rgba" >/dev/null 2>&1 &
+
+# Import user env vars into systemd user session to support xdg-desktop-portal-wlr
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots >/dev/null 2>&1 &

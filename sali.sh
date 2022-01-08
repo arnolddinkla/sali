@@ -221,6 +221,7 @@ function install() {
     #Note: systemctl enable --user doesn't work via arch-chroot, performing manual creation of symlinks
     # systemctl enable --user --now pipewire.service
     # systemctl enable --user --now pipewire-pulse.service
+    # systemctl enable --user --now pipewire-media-session.service
     arch-chroot -u $USER_NAME /mnt mkdir -p /home/${USER_NAME}/.config/systemd/user/default.target.wants
     arch-chroot -u $USER_NAME /mnt mkdir -p /home/${USER_NAME}/.config/systemd/user/sockets.target.wants
 
@@ -229,6 +230,8 @@ function install() {
 
     arch-chroot -u $USER_NAME /mnt ln -s /usr/lib/systemd/user/pipewire-pulse.service /home/${USER_NAME}/.config/systemd/user/default.target.wants/pipewire-pulse.service
     arch-chroot -u $USER_NAME /mnt ln -s /usr/lib/systemd/user/pipewire-pulse.socket /home/${USER_NAME}/.config/systemd/user/sockets.target.wants/pipewire-pulse.socket
+
+    arch-chroot -u $USER_NAME /mnt ln -s /usr/lib/systemd/user/pipewire-media-session.service /home/${USER_NAME}/.config/systemd/user/default.target.wants/pipewire-media-session.service
 
     # Install GPU Drivers
     COMMON_VULKAN_PACKAGES="vulkan-icd-loader lib32-vulkan-icd-loader vulkan-tools"
