@@ -213,7 +213,6 @@ function install() {
         polkit-gnome                `# Used to prompt for elevated credentials when neccessary` \
         swaybg swayidle slurp grim  `# Commandline utils for: setting bg, idle handling, selecting display, and screenshots` \
         qt5-wayland                 `# Explicit support for running Qt apps under wayland` \
-        foot                        `# Excellent light-weight terminal` \
         firefox                     `# Browser ` \
         thunar                      `# File manager ` \
         ttf-liberation              `# Liberation fonts` \
@@ -261,7 +260,7 @@ function install() {
     install_aur_helper
 
     # Install labwc and other important utilities via AUR
-    exec_as_user "paru -S --noconfirm --needed labwc wlr-randr way-displays waybar network-manager-applet"
+    exec_as_user "paru -S --noconfirm --needed labwc foot wlr-randr way-displays waybar network-manager-applet"
 
     # Install additional GTK theme and fonts to make everything look consistent
     arch-chroot /mnt pacman -S --noconfirm --needed pop-gtk-theme ttf-roboto ttf-roboto-mono
