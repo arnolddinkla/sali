@@ -210,15 +210,18 @@ function install() {
         brightnessctl               `# Commandline utility for conrolling screen brightness ` \
         xdg-desktop-portal          `# Support for screensharing in pipewire for wlroots compositors` \
         xdg-desktop-portal-wlr \
+        polkit-gnome                `# Used to prompt for elevated credentials when neccessary` \
         swaybg swayidle slurp grim  `# Commandline utils for: setting bg, idle handling, selecting display, and screenshots` \
+        qt5-wayland                 `# Explicit support for running Qt apps under wayland` \
+        foot                        `# Excellent light-weight terminal` \
+        firefox                     `# Browser ` \
+        thunar                      `# File manager ` \
         ttf-liberation              `# Liberation fonts` \
         noto-fonts noto-fonts-emoji `# Noto fonts to support emojis` \
         otf-font-awesome            `# Font Awesome fonts for waybar` \
-        rust                        `# Rust for paru AUR helper` \
-        firefox                     `# Browser ` \
-        thunar                      `# File manager ` \
-        polkit-gnome                `# Used to prompt for elevated credentials when neccessary` \
-        qt5-wayland                 `# Explicit support for running Qt apps under wayland`
+        pop-gtk-theme               `# GTK theme` \
+        papirus-icon-theme          `# Icon theme` \
+        rust                        `# Rust for paru AUR helper` 
 
     #Note: systemctl enable --user doesn't work via arch-chroot, performing manual creation of symlinks
     # systemctl enable --user --now pipewire.service
@@ -258,7 +261,7 @@ function install() {
     install_aur_helper
 
     # Install labwc and other important utilities via AUR
-    exec_as_user "paru -S --noconfirm --needed labwc foot wlr-randr way-displays waybar network-manager-applet"
+    exec_as_user "paru -S --noconfirm --needed labwc wlr-randr way-displays waybar network-manager-applet"
 
     # Install additional GTK theme and fonts to make everything look consistent
     arch-chroot /mnt pacman -S --noconfirm --needed pop-gtk-theme ttf-roboto ttf-roboto-mono
@@ -280,6 +283,16 @@ function install() {
     # Copy default configuration file for way-displays
     arch-chroot -u $USER_NAME /mnt mkdir -p /home/${USER_NAME}/.config/way-displays
     arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/way-displays/cfg.yaml /home/${USER_NAME}/.config/way-displays/.
+
+    # Copy default configuration file and styling for waybar
+    arch-chroot -u $USER_NAME /mnt mkdir -p /home/${USER_NAME}/.config/waybar
+    arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/waybar/config /home/${USER_NAME}/.config/waybar/.
+    arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/waybar/style.css /home/${USER_NAME}/.config/waybar/.
+
+    # Copy default configuration file and styling for foot
+    arch-chroot -u $USER_NAME /mnt mkdir -p /home/${USER_NAME}/.config/foot
+    arch-chroot -u $USER_NAME /mnt cp /home/${USER_NAME}/sali/config/foot/foot.ini /home/${USER_NAME}/.config/foot/.
+
     
     echo -e "${LIGHT_BLUE}Installation has completed! Run 'reboot' to reboot your machine.${NC}"
 }

@@ -27,6 +27,7 @@ nm-applet --indicator >/dev/null 2>&1 &
 
 # Set GTK themes and fonts
 gsettings set org.gnome.desktop.interface gtk-theme "Pop-dark" >/dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark" >/dev/null 2>&1 &
 gsettings set org.gnome.desktop.interface font-name "Roboto 10" >/dev/null 2>&1 &
 gsettings set org.gnome.desktop.interface document-font-name "Roboto 10" >/dev/null 2>&1 &
 gsettings set org.gnome.desktop.interface monospace-font-name "Roboto Mono 11" >/dev/null 2>&1 &
