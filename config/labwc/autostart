@@ -29,4 +29,4 @@ gsettings set org.gnome.desktop.interface font-antialiasing "rgba" >/dev/null 2>
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 >/dev/null 2>&1 &
 
 # Import user env vars into systemd user session to support xdg-desktop-portal-wlr
-dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots >/dev/null 2>&1 &
+dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway >/dev/null 2>&1 &

@@ -210,7 +210,7 @@ function install() {
         brightnessctl               `# Commandline utility for conrolling screen brightness ` \
         xdg-desktop-portal          `# Support for screensharing in pipewire for wlroots compositors` \
         xdg-desktop-portal-wlr \
-        swaybg swayidle slurp grim  `# Commandline utilities for setting background, idle management, and selecting a display` \
+        swaybg swayidle slurp grim  `# Commandline utils for: setting bg, idle handling, selecting display, and screenshots` \
         ttf-liberation              `# Liberation fonts` \
         noto-fonts noto-fonts-emoji `# Noto fonts to support emojis` \
         otf-font-awesome            `# Font Awesome fonts for waybar` \
@@ -218,6 +218,7 @@ function install() {
         firefox                     `# Browser ` \
         thunar                      `# File manager ` \
         polkit-gnome                `# Used to prompt for elevated credentials when neccessary` \
+        qt5-wayland                 `# Explicit support for running Qt apps under wayland`
 
     #Note: systemctl enable --user doesn't work via arch-chroot, performing manual creation of symlinks
     # systemctl enable --user --now pipewire.service
