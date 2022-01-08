@@ -28,13 +28,13 @@ tooltip {
 }
 
 .modules-right > widget:nth-child(3n+1) > label {
-    background-color: #3700b3;
-    color: #dedede;
+    background-color: #bb86fc;
+    color: #121212;
 }
 
 .modules-right > widget:nth-child(3n-1) > label {
-    background-color: #bb86fc;
-    color: #121212;
+    background-color: #3700b3;
+    color: #dedede;
 }
 
 .modules-right > widget:nth-child(3n) > label {
