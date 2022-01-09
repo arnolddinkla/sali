@@ -214,7 +214,12 @@ function install() {
         swaybg swayidle slurp grim  `# Commandline utils for: setting bg, idle handling, selecting display, and screenshots` \
         qt5-wayland                 `# Explicit support for running Qt apps under wayland` \
         firefox                     `# Browser ` \
-        thunar                      `# File manager ` \
+        thunar                      `# Thunar file manager` \
+        gvfs                        `# Gnome Virtual Filesystem for additional mount support (smb,mtp, etc.)` \
+        thunar-archive-plugin       `# Additional thunar plugins` \
+        thunar-media-tags-plugin \
+        thunar-volman \
+        tumbler \
         ttf-liberation              `# Liberation fonts` \
         noto-fonts noto-fonts-emoji `# Noto fonts to support emojis` \
         otf-font-awesome            `# Font Awesome fonts for waybar` \
