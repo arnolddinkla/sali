@@ -51,6 +51,9 @@
     <keybind key="A-F4">
       <action name="Close" />
     </keybind>
+    <keybind key="W-/">
+      <action name="Execute"><command>fuzzel -f 'Roboto Mono:size=11' -i Papirus-Dark -b 1f1f1fff -t dededeff -m ffffffff -s 03dac6ff -S 1f1f1fff -B 2 -r 5 -C 373737ff</command></action>
+    </keybind
     <keybind key="W-Return">
       <action name="Execute"><command>foot</command></action>
     </keybind>

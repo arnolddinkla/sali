@@ -28,7 +28,7 @@ window.inactive.button.unpressed.image.color: #999999
 
 # menu
 menu.items.bg.color: #1f1f1f
-menu.items.text.color: #999999
+menu.items.text.color: #dedede
 menu.items.active.bg.color: #03dac6
 menu.items.active.text.color: #1f1f1f
 
