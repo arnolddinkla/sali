@@ -41,6 +41,9 @@
     approach could be to start the <keyboard> section with a <default />
     element, and then (re-)define any special binds you need such as launching
     your favourite terminal or application launcher.
+    
+    Note: you can use the 'wev' utility (available in AUR) to identify the names of keys
+    Example: '/' = 'slash', '<' = 'less', etc.
   -->
   <keyboard>
     <repeatRate>25</repeatRate>
@@ -51,9 +54,9 @@
     <keybind key="A-F4">
       <action name="Close" />
     </keybind>
-    <keybind key="W-/">
+    <keybind key="W-slash">
       <action name="Execute"><command>fuzzel -f 'Roboto Mono:size=11' -i Papirus-Dark -b 1f1f1fff -t dededeff -m ffffffff -s 03dac6ff -S 1f1f1fff -B 2 -r 5 -C 373737ff</command></action>
-    </keybind
+    </keybind>
     <keybind key="W-Return">
       <action name="Execute"><command>foot</command></action>
     </keybind>
