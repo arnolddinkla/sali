@@ -16,6 +16,9 @@ way-displays >/tmp/way-displays.${XDG_VTNR}.${USER}.log 2>&1 &
 # Run waybar
 waybar >/dev/null 2>&1 &
 
+# Run mako
+mako >/dev/null 2>&1 &
+
 # Start polkit-gnome to prompt for elevated credentials when neccessary
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 >/dev/null 2>&1 &
 
