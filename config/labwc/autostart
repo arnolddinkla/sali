@@ -17,6 +17,8 @@ way-displays >/tmp/way-displays.${XDG_VTNR}.${USER}.log 2>&1 &
 waybar >/dev/null 2>&1 &
 
 # Run mako
+# Note: you can test notifications using the notify-send command
+# example: notify-send 'Header' 'This is an example notification.' --icon=dialog-information
 mako >/dev/null 2>&1 &
 
 # Start polkit-gnome to prompt for elevated credentials when neccessary
