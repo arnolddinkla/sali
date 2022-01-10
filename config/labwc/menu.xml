@@ -18,7 +18,7 @@
     <action name="Execute"><command>firefox</command></action>
   </item>
   <item label="Launcher">
-    <action name="Execute"><command>fuzzel -f 'Roboto Mono:size=11' -i Papirus-Dark -b 1f1f1fff -t dededeff -m ffffffff -s 03dac6ff -S 1f1f1fff -B 2 -r 5 -C 373737ff</command></action>
+    <action name="Execute"><command>fuzzel -f 'Roboto Mono:size=11' -i Papirus-Dark -b 1f1f1fff -t dededeff -m ffffffff -s 03dac6ff -S 1f1f1fff -B 2 -r 5 -C 373737ff -T foot</command></action>
   </item>
   <item label="Reconfigure">
     <action name="Reconfigure"></action>
