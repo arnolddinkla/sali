@@ -212,6 +212,7 @@ function install() {
         xdg-desktop-portal-wlr \
         polkit-gnome                `# Used to prompt for elevated credentials when neccessary` \
         swaybg swayidle slurp grim  `# Commandline utils for: setting bg, idle handling, selecting display, and screenshots` \
+        mako                        `# Notification daemon` \
         qt5-wayland                 `# Explicit support for running Qt apps under wayland` \
         firefox                     `# Browser ` \
         thunar                      `# Thunar file manager` \

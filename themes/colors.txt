@@ -21,3 +21,6 @@
 
 # Deep Purple
 #3700b3
+
+# Error Red
+#cf6679
