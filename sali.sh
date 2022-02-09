@@ -103,8 +103,11 @@ function install() {
     # Bootstrap new environment
     pacstrap /mnt
 
+    # Force a refresh of the archlinux-keyring package
+    arch-chroot /mnt pacman -Syyu --noconfirm archlinux-keyring
+
     # Install essential packages
-    arch-chroot /mnt pacman -Syu --noconfirm --needed \
+    arch-chroot /mnt pacman -S --noconfirm --needed \
         base-devel              `# Core development libraries (gcc, etc.)` \
         linux linux-headers     `# Linux kernel and headers` \
         fwupd                   `# Support for updating firmware from Linux Vendor Firmware Service [https://fwupd.org/]` \
@@ -199,11 +202,9 @@ function install() {
     # Configure pacman hook for upgrading pacman-mirrorlist package
     configure_pacman_mirrorupgrade_hook
     
-    # Explicitly install wlroots-0.15 package from community staging
-    arch-chroot /mnt pacman -U --noconfirm --needed https://archlinux.org/packages/community-staging/x86_64/wlroots/download
-
     # Install all prereqs for labwc
     arch-chroot /mnt pacman -S --noconfirm --needed \
+        wlroots                     `# wlroots` \
         xorg-xwayland               `# Xwayland support` \
         pipewire pipewire-pulse     `# Pipewire and Pipewire drop in replacement for PulseAudio` \
         pamixer                     `# Commandline utility for controlling volume (PulseAudio)` \
