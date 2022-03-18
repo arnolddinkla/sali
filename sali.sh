@@ -42,7 +42,7 @@ USER_NAME=""
 USER_PASSWORD=""
 
 # Additional Linux Command Line Params
-CMDLINE_LINUX=""
+CMDLINE_LINUX="" #"msr.allow_writes=on"
 
 # Installation Scripts
 #################################################
@@ -128,6 +128,10 @@ function install() {
         arch-chroot /mnt pacman -S --noconfirm --needed linux-firmware intel-ucode
     fi
 
+    # Enable systemd-resolved local caching DNS provider
+    # Note: NetworkManager uses systemd-resolved by default
+    arch-chroot /mnt systemctl enable systemd-resolved.service
+
     # Enable NetworkManager.service
     # Note: NetworkManager will handle DHCP
     arch-chroot /mnt systemctl enable NetworkManager.service
@@ -177,10 +181,16 @@ function install() {
     # Configure root password
     printf "$ROOT_PASSWORD\n$ROOT_PASSWORD" | arch-chroot /mnt passwd
 
-    arch-chroot /mnt sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="'"$CMDLINE_LINUX"'"/' /etc/default/grub
-
     # Install and configure Grub as bootloader on ESP
     arch-chroot /mnt pacman -S --noconfirm --needed grub efibootmgr
+
+    # Add KMS if using a NVIDIA GPU
+    if [[ "$NVIDIA_GPU" == "true" ]]; then
+        CMDLINE_LINUX="$CMDLINE_LINUX nvidia-drm.modeset=1"
+    fi
+
+    CMDLINE_LINUX=$(trim_variable "$CMDLINE_LINUX")
+    arch-chroot /mnt sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="'"$CMDLINE_LINUX"'"/' /etc/default/grub
 
     # Note the '--removable' switch will also setup grub on /boot/EFI/BOOT/BOOTX64.EFI (which is the Windows default location)
     # This is neccessary because many BIOSes don't honor efivars correctly
@@ -206,7 +216,9 @@ function install() {
     arch-chroot /mnt pacman -S --noconfirm --needed \
         wlroots                     `# wlroots` \
         xorg-xwayland               `# Xwayland support` \
-        pipewire pipewire-pulse     `# Pipewire and Pipewire drop in replacement for PulseAudio` \
+        pipewire wireplumber        `# Pipewire and wireplumber session manager` \
+        pipewire-pulse              `# Pipewire drop in replacement for PulseAudio` \
+        pipewire-jack               `# Pipewire JACK support` \
         pamixer                     `# Commandline utility for controlling volume (PulseAudio)` \
         brightnessctl               `# Commandline utility for conrolling screen brightness ` \
         xdg-desktop-portal          `# Support for screensharing in pipewire for wlroots compositors` \
@@ -344,8 +356,8 @@ function check_variables() {
 ERROR_VARS_MESSAGE="${RED}Error: you must edit sagi.sh (e.g. with vim) and configure the required variables.${NC}"
 
 function check_variables_value() {
-    NAME=$1
-    VALUE=$2
+    local NAME=$1
+    local VALUE=$2
     if [[ -z "$VALUE" ]]; then
         echo -e $ERROR_VARS_MESSAGE
         echo "$NAME must have a value."
@@ -354,8 +366,8 @@ function check_variables_value() {
 }
 
 function check_variables_boolean() {
-    NAME=$1
-    VALUE=$2
+    local NAME=$1
+    local VALUE=$2
     case $VALUE in
         true )
             ;;
@@ -369,15 +381,22 @@ function check_variables_boolean() {
     esac
 }
 
+function trim_variable() {
+    local VARIABLE="$1"
+    local VARIABLE=$(echo "$VARIABLE" | sed 's/^[[:space:]]*//') # trim leading
+    local VARIABLE=$(echo "$VARIABLE" | sed 's/[[:space:]]*$//') # trim trailing
+    echo "$VARIABLE"
+}
+
 function print_variables_value() {
-    NAME=$1
-    VALUE=$2
+    local NAME=$1
+    local VALUE=$2
     echo -e "$NAME = ${WHITE}${VALUE}${NC}"
 }
 
 function print_variables_boolean() {
-    NAME=$1
-    VALUE=$2
+    local NAME=$1
+    local VALUE=$2
     if [[ "$VALUE" == "true" ]]; then
         echo -e "$NAME = ${GREEN}${VALUE}${NC}"
     else
@@ -404,7 +423,7 @@ function check_network() {
 function confirm_install() {
     clear
 
-    echo -e "${LBLUE}Sali (Simple Arch Labwc Installer)${NC}"
+    echo -e "${LBLUE}Sagi (Simple Arch Labwc Installer)${NC}"
     echo ""
     echo -e "${RED}Warning"'!'"${NC}"
     echo -e "${RED}This script will destroy all data on ${HD_DEVICE}${NC}"
@@ -442,6 +461,10 @@ function confirm_install() {
     print_variables_value "USER_PASSWORD" "$USER_PASSWORD"
     echo ""
 
+    echo -e "${LBLUE}Linux Command Line Params:${NC}"
+    print_variables_value "CMDLINE_LINUX" "$CMDLINE_LINUX"
+    echo ""
+
     read -p "Do you want to continue? [y/N] " yn
     case $yn in
         [Yy]* )
@@ -456,12 +479,12 @@ function confirm_install() {
 }
 
 function install_aur_helper() {
-    COMMAND="rm -rf /home/$USER_NAME/.paru-makepkg && mkdir -p /home/$USER_NAME/.paru-makepkg && cd /home/$USER_NAME/.paru-makepkg && git clone https://aur.archlinux.org/paru.git && (cd paru && makepkg -si --noconfirm) && rm -rf /home/$USER_NAME/.paru-makepkg"
+    local COMMAND="rm -rf /home/$USER_NAME/.paru-makepkg && mkdir -p /home/$USER_NAME/.paru-makepkg && cd /home/$USER_NAME/.paru-makepkg && git clone https://aur.archlinux.org/paru.git && (cd paru && makepkg -si --noconfirm) && rm -rf /home/$USER_NAME/.paru-makepkg"
     exec_as_user "$COMMAND"
 }
 
 function exec_as_user() {
-    COMMAND="$1"
+    local COMMAND="$1"
     arch-chroot /mnt sed -i 's/^%wheel ALL=(ALL:ALL) ALL$/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
     arch-chroot /mnt bash -c "echo -e \"$USER_PASSWORD\n$USER_PASSWORD\n$USER_PASSWORD\n$USER_PASSWORD\n\" | su $USER_NAME -s /usr/bin/bash -c \"$COMMAND\""
     arch-chroot /mnt sed -i 's/^%wheel ALL=(ALL:ALL) NOPASSWD: ALL$/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
